@@ -1,4 +1,5 @@
 import {Avatar, Box, Flex, IconButton, Image, VStack} from "@chakra-ui/react";
+import {useSession} from "next-auth/client";
 
 import {
   RiDashboardLine,
@@ -8,6 +9,8 @@ import {
 } from "react-icons/ri";
 
 export function Sidebar() {
+  const [session] = useSession();
+
   return (
     <Flex
       as="aside"
@@ -42,7 +45,7 @@ export function Sidebar() {
           />
         </VStack>
       </Box>
-      <Avatar name="Guilherme Galaverna" />
+      <Avatar name={session?.user.name} src={session?.user.image} />
     </Flex>
   );
 }

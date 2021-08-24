@@ -1,6 +1,9 @@
 import {Avatar, Box, Divider, Flex, Text} from "@chakra-ui/react";
+import {useSession} from "next-auth/client";
 
 export function Questions() {
+  const [session] = useSession();
+
   return (
     <Flex w="100%">
       <Flex
@@ -13,9 +16,9 @@ export function Questions() {
         borderRadius="md"
       >
         <Flex>
-          <Avatar name="Guilherme Galaverna" />
+          <Avatar name={session?.user.name} src={session?.user.image} />
           <Box ml="5">
-            <Text>Guilherme Galaverna</Text>
+            <Text>{session?.user.name}</Text>
             <Text>24/08/2021</Text>
           </Box>
           <Divider orientation="vertical" mx="4" />
