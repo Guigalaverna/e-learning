@@ -7,7 +7,7 @@ export const theme: Theme = extendTheme({
     mono: "Menlo, monospace",
   },
 
-  fontWeights: {
+  weights: {
     normal: 400,
     medium: 500,
     bold: 700
@@ -18,7 +18,7 @@ export const theme: Theme = extendTheme({
     md: '8px'
   },
 
-  fontSizes: {
+  sizes: {
     '6xl': '54px'
   },
 
@@ -38,7 +38,7 @@ export const theme: Theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: 'gray.900',
+        bg: 'gray.800',
         color: 'white'
       }
     }
