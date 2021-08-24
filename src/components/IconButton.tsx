@@ -6,9 +6,16 @@ interface ButtonProps extends ChakraButtonProps {
   children: ReactNode;
 }
 
-export function IconButton({children}: ButtonProps) {
+export function IconButton({children, ...rest}: ButtonProps) {
   return (
-    <Button h="50px" flex="1" bg="gray.600" ml="6" _hover={{bg: "purple.500"}}>
+    <Button
+      h="50px"
+      flex="1"
+      bg="gray.600"
+      ml="6"
+      _hover={{bg: "purple.500"}}
+      {...rest}
+    >
       {children}
     </Button>
   );
