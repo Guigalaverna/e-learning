@@ -1,12 +1,54 @@
-import {Flex, Grid, Heading, Image, Link, Text, VStack} from "@chakra-ui/react";
+import {
+  Flex,
+  Grid,
+  Heading,
+  Image,
+  Link,
+  Text,
+  useToast,
+  VStack,
+} from "@chakra-ui/react";
 import {Button} from "../components/Button";
 import {IconButton} from "../components/IconButton";
 
 import {Divider} from "../components/Divider";
 import {Input} from "../components/Input";
 import {SignUpLink} from "../components/SignUpLink";
+import {signIn, useSession} from "next-auth/client";
+
+import {useRouter} from "next/router";
+import {useEffect} from "react";
 
 export default function Login() {
+  const toast = useToast();
+  const router = useRouter();
+  const [session] = useSession();
+
+  async function handleLoginWithGitHub() {
+    try {
+      await signIn("github", {
+        callbackUrl: "http://localhost:3000/dashboard",
+        redirect: true,
+      });
+      // router.push("/dashboard");
+    } catch (err) {
+      toast({
+        title: "Erro ao fazer o login.",
+        description: "Algo ocorreu durante o login com o GitHub.",
+        status: "error",
+        isClosable: true,
+        duration: 900,
+        position: "top-right",
+      });
+
+      console.error(err);
+    }
+  }
+
+  useEffect(() => {
+    console.log(session);
+  }, [session]);
+
   return (
     <Grid
       as="main"
@@ -65,7 +107,7 @@ export default function Login() {
 
         <Flex align="center" mt="6">
           <Text fontSize="sm">Ou entre com</Text>
-          <IconButton>GITHUB</IconButton>
+          <IconButton onClick={handleLoginWithGitHub}>GITHUB</IconButton>
         </Flex>
       </Flex>
     </Grid>
