@@ -1,3 +1,5 @@
+import {Heading} from "@chakra-ui/react";
+
 export default function Login() {
-  return <h1>Hello, world!</h1>;
+  return <Heading>Hello, world!</Heading>;
 }
