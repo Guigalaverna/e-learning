@@ -1,15 +1,10 @@
-import {
-  Button,
-  Flex,
-  Grid,
-  Heading,
-  Image,
-  Input,
-  Link,
-  Text,
-} from "@chakra-ui/react";
+import {Flex, Grid, Heading, Image, Link, Text, VStack} from "@chakra-ui/react";
+import {Button} from "../components/Button";
+import {IconButton} from "../components/IconButton";
 
 import {Divider} from "../components/Divider";
+import {Input} from "../components/Input";
+import {SignUpLink} from "../components/SignUpLink";
 
 export default function Login() {
   return (
@@ -42,22 +37,10 @@ export default function Login() {
         align="stretch"
         p="16"
       >
-        <Input
-          h="50px"
-          bg="gray.800"
-          focusBorderColor="purple.500"
-          borderRadius="sm"
-          placeholder="E-mail"
-        />
-
-        <Input
-          h="50px"
-          bg="gray.800"
-          focusBorderColor="purple.500"
-          borderRadius="sm"
-          mt="2"
-          placeholder="Senha"
-        />
+        <VStack spacing="4">
+          <Input variant="filled" placeholder="E-mail" />
+          <Input variant="filled" placeholder="Senha" />
+        </VStack>
 
         <Link
           alignSelf="flex-start"
@@ -72,39 +55,17 @@ export default function Login() {
           Esqueci minha senha
         </Link>
 
-        <Button
-          mt="6"
-          bg="purple.500"
-          h="50px"
-          borderRadius="sm"
-          _hover={{bg: "purple.600"}}
-        >
+        <Button bg="purple.500" mt="4">
           ENTRAR
         </Button>
-        <Text textAlign="center" fontSize="sm" color="gray.300" mt="6">
-          Não tem uma conta?{" "}
-          <Link
-            color="purple.600"
-            fontWeight="medium"
-            _hover={{color: "purple.500"}}
-          >
-            Criar uma conta
-          </Link>
-        </Text>
+
+        <SignUpLink />
 
         <Divider />
 
         <Flex align="center" mt="6">
           <Text fontSize="sm">Ou entre com</Text>
-          <Button
-            h="50px"
-            flex="1"
-            bg="gray.600"
-            ml="6"
-            _hover={{bg: "purple.500"}}
-          >
-            GITHUB
-          </Button>
+          <IconButton>GITHUB</IconButton>
         </Flex>
       </Flex>
     </Grid>
